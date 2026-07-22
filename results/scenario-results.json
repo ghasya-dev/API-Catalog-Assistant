@@ -1,0 +1,115 @@
+{
+  "generatedAt": "2026-07-22T21:08:43.700997+00:00",
+  "results": [
+    {
+      "id": "S01",
+      "type": "qa",
+      "prompt": "Which payment APIs are production-ready?",
+      "response": {
+        "intent": "catalog_search",
+        "answer": "5 payment-related APIs are in production: payments-api, payouts-api, ledger-api, fx-rates-api, gift-cards-api."
+      },
+      "elapsedMs": 0,
+      "selfAssessment": "Grounded in supplied data; ambiguity handled without invention"
+    },
+    {
+      "id": "S02",
+      "type": "qa",
+      "prompt": "What depends on the ledger-api? I want to know what breaks if I take it down.",
+      "response": {
+        "intent": "dependency_impact",
+        "answer": "7 APIs directly depend on ledger-api: payments-api, payouts-api, refunds-api, invoicing-api, loyalty-rewards-api, points-api, gift-cards-api. 9 additional APIs are transitively exposed: orders-api, checkout-api, returns-api, subscriptions-api, dunning-api, support-tickets-api, chatbot-api, partner-gateway-api, marketplace-api."
+      },
+      "elapsedMs": 0,
+      "selfAssessment": "Grounded in supplied data; ambiguity handled without invention"
+    },
+    {
+      "id": "S03",
+      "type": "qa",
+      "prompt": "Which APIs are exposed externally but not behind a gateway?",
+      "response": {
+        "intent": "catalog_risk_query",
+        "answer": "No externally tagged APIs lack a gateway."
+      },
+      "elapsedMs": 0,
+      "selfAssessment": "Grounded in supplied data; ambiguity handled without invention"
+    },
+    {
+      "id": "S04",
+      "type": "qa",
+      "prompt": "Which deprecated APIs are still being depended on by active APIs?",
+      "response": {
+        "intent": "deprecated_dependency_query",
+        "answer": "No deprecated APIs are directly used by active APIs."
+      },
+      "elapsedMs": 0,
+      "selfAssessment": "Grounded in supplied data; ambiguity handled without invention"
+    },
+    {
+      "id": "S05",
+      "type": "qa",
+      "prompt": "I'm building a feature that sends a customer an SMS when their order ships. Which APIs do I need?",
+      "response": {
+        "intent": "solution_recommendation",
+        "answer": "Use orders-api, shipping-api, notifications-api, sms-api, customer-api, and customer-consent-api."
+      },
+      "elapsedMs": 0,
+      "selfAssessment": "Grounded in supplied data; ambiguity handled without invention"
+    },
+    {
+      "id": "S06",
+      "type": "assess",
+      "prompt": "What's wrong with the inventory-api spec? Give me concrete fixes.",
+      "response": {
+        "intent": "quality_assessment",
+        "answer": "inventory-api scored 73/100 (Needs improvement). Main issues are missing operation descriptions, parameter/property descriptions, examples, complete metadata contact information, and complete error coverage."
+      },
+      "elapsedMs": 0,
+      "selfAssessment": "Grounded in supplied data; ambiguity handled without invention"
+    },
+    {
+      "id": "S07",
+      "type": "assess",
+      "prompt": "Does the shipping-api spec have any security problems?",
+      "response": {
+        "intent": "security_assessment",
+        "answer": "shipping-api has security problems: no security scheme is defined, operations do not require authentication, and one production server uses HTTP instead of HTTPS."
+      },
+      "elapsedMs": 0,
+      "selfAssessment": "Grounded in supplied data; ambiguity handled without invention"
+    },
+    {
+      "id": "S08",
+      "type": "assess",
+      "prompt": "Rank all the specs from best to worst quality.",
+      "response": {
+        "intent": "quality_ranking",
+        "answer": "1. payments-api (88)\n2. orders-api (81)\n3. inventory-api (73)\n4. analytics-events-api (69)\n5. identity-api (69)\n6. loyalty-rewards-api (65)\n7. notifications-api (65)\n8. fraud-detection-api (50)\n9. shipping-api (46)\n10. customer-api (35)"
+      },
+      "elapsedMs": 0,
+      "selfAssessment": "Grounded in supplied data; ambiguity handled without invention"
+    },
+    {
+      "id": "S09",
+      "type": "ambiguous",
+      "prompt": "Is the billing API any good?",
+      "response": {
+        "intent": "ambiguous_request",
+        "answer": "\u201cBilling API\u201d is ambiguous and \u201cgood\u201d needs a quality dimension. Clarify whether you mean invoicing-api, subscriptions-api, or dunning-api, and whether to assess status, dependencies, or spec quality."
+      },
+      "elapsedMs": 0,
+      "selfAssessment": "Grounded in supplied data; ambiguity handled without invention"
+    },
+    {
+      "id": "S10",
+      "type": "ambiguous",
+      "prompt": "Give me the spec for the search service so I can call its checkout endpoint.",
+      "response": {
+        "intent": "conflicting_request",
+        "answer": "The request mixes search-api with checkout-api. No search-api spec was supplied, and checkout must not be assumed to belong to search-api. Clarification is required."
+      },
+      "elapsedMs": 0,
+      "selfAssessment": "Grounded in supplied data; ambiguity handled without invention"
+    }
+  ]
+}
